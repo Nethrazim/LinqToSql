@@ -39,7 +39,16 @@ namespace LinqToSql.Queries
                      .GroupBy(a => new { a.B?.Address, a.B?.City })
                      .Select(grp => grp.Count());
             Out(q3);
-            
+
+            var q4 = from p in items
+                     from add in items2
+                     select new
+                     {
+                         Name = p.Name,
+                         City = add?.City,
+                         Total = items.Count() * items2.Count()
+                     };
+            Out(q4);
         }
     }
 }
