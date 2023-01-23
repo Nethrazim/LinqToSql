@@ -8,12 +8,11 @@ namespace LinqToSql.Queries.ObjectModels
 {
     public static class Models
     {
-        public static List<A> items = null;
+        public static List<A> items = new List<A>();
         public static List<B> items2 = new List<B>();
 
         static Models() //static constructor
         { 
-            items = new List<A>();
             PopulateData();
         }
 
@@ -31,7 +30,9 @@ namespace LinqToSql.Queries.ObjectModels
                 new A{ Id = 3, Name ="Vlad", Email = "1a@gmail.com"},
                 new A{ Id = 4, Name = "Banzo",Email = "b@gmail.com"},
                 new A{ Id = 5, Name="Banzo",Email = "b@gmail.com"},
-                new A{ Id = 6, Name = "Petre", Email = "p@gmail.com"}
+                new A{ Id = 6, Name = "Petre", Email = "p@gmail.com"},
+                new A{ Id = 7, Name = "Branzei Vlad", Email="vb@gmail.com"},
+
             });
 
             items2.Clear();

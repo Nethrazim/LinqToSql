@@ -25,7 +25,7 @@ namespace LinqToSql.Queries
 
         public virtual void Out<T>(IEnumerable<T> items)
         {
-            Console.WriteLine($"FileName {FileName} Exemple <<{++sequence}>> :");
+            Console.WriteLine($"FileName {FileName} Example <<{++sequence}>> :");
             foreach (var item in items)
             {
                 Console.WriteLine(item);
@@ -34,7 +34,7 @@ namespace LinqToSql.Queries
 
         public virtual void Out(IEnumerable<int> items)
         {
-            Console.WriteLine($"FileName {FileName} Exemple <<{++sequence}>> :");
+            Console.WriteLine($"FileName {FileName} Example <<{++sequence}>> :");
             foreach (var item in items)
             {
                 Console.WriteLine(item);
