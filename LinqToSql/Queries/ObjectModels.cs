@@ -38,6 +38,7 @@ namespace LinqToSql.Queries.ObjectModels
             items2.AddRange(new List<B>
             {
                 new B { Id = 1, Address = "Vlad's street", City = "Vlad's City" },
+                new B { Id = 2, Address = "Vlad's street", City = "Vlad's City" },
             });
         }
     }
@@ -47,10 +48,10 @@ namespace LinqToSql.Queries.ObjectModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-
+        public B B { get; set; }
         public override string ToString()
         {
-            return $"Id = {Id} Name = {Name} Email = {Email}";
+            return $"Id = {Id} Name = {Name} Email = {Email} B = {{{ B }}}";
         }
     }
 

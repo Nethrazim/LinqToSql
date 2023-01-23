@@ -25,6 +25,21 @@ namespace LinqToSql.Queries
 
             IEnumerable<A> q1 = items.Join(items2, key1 => key1.Id, key2 => key2.Id, (item1, item2) => new A { Id = item1.Id, Email = item1.Email, Name = item1.Name });
             Out(q1);
+
+            var q2 = from p in items
+                     join add in items2 on p.Id equals add.Id into gj
+                     from x in gj.DefaultIfEmpty()
+                     select new A { Id = p.Id, Name = p.Name, Email = p.Name, B = x };
+            Out(q2);
+
+            var q3 = (from p in items
+                      join add in items2 on p.Id equals add.Id into gj
+                      from x in gj.DefaultIfEmpty()
+                      select new A { Id = p.Id, Name = p.Name, Email = p.Email, B = x }).ToList()
+                     .GroupBy(a => new { a.B?.Address, a.B?.City })
+                     .Select(grp => grp.Count());
+            Out(q3);
+            
         }
     }
 }
