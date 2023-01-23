@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace LinqToSql.Queries
 {
-    public class QBase
+    public abstract class QBase
     {
         public LinqToSqlSQLContext dbContext { get; set; }
-        public QBase(LinqToSqlSQLContext dbContext)
+        public QBase(LinqToSqlSQLContext dbContext = null)
         {
             this.dbContext = dbContext ?? new LinqToSqlSQLContext();
-            Seed();
         }
 
-        public virtual void Out<T>(List<T> items)
+        public virtual void Out<T>(IEnumerable<T> items)
         {
             foreach (var item in items)
             {
@@ -25,7 +24,7 @@ namespace LinqToSql.Queries
             }
         }
 
-        public virtual void Out(List<int> items)
+        public virtual void Out(IEnumerable<int> items)
         {
             foreach (var item in items)
             {
@@ -33,15 +32,13 @@ namespace LinqToSql.Queries
             }
         }
 
-        public virtual void Seed() { 
-
-        }
         public virtual void QToObjects()
         {
         }
 
         public virtual void QToSql()
         {
+            dbContext  = dbContext ??  new LinqToSqlSQLContext();
         }
 
     }

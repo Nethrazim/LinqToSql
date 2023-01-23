@@ -1,40 +1,20 @@
 ﻿using LinqToSql.Model;
+using LinqToSql.Queries.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models = LinqToSql.Queries.ObjectModels.Models;
 
 namespace LinqToSql.Queries
 {
-    public class A
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-
-        public override string ToString()
-        {
-            return $"Id = {Id} Name = {Name}";
-        }
-    }
 
     public class Q1 : QBase
     {
-        public Q1() : base(null) { }
+        public Q1() { }
 
-        public List<A> items = new List<A>();
-
-        public override void Seed()
-        {
-            items.AddRange(new List<A> {
-                new A { Id = 1, Name = "Vlad", Email = "a@gmail.com" },
-                new A { Id = 2, Name = "Vlad", Email = "a@gmail.com" },
-                new A { Id = 3, Name = "Vlad", Email = "1a@gmail.com"},
-                new A { Id = 4, Name = "Banzo", Email = "b@gmail.com"},
-                new A { Id = 5, Name = "Banzo", Email ="b@gmail.com" }
-            });
-        }
+        public List<A> items = Models.items;
 
         public void QToObjects()
         {
@@ -44,6 +24,8 @@ namespace LinqToSql.Queries
             var duplicate = items.GroupBy(g => new { g.Name, g.Email }).Select(grp => new { Name = grp.Key.Name, Email = grp.Key.Email, Id = grp.Max(x => x.Id) }).ToList();
             
             items.RemoveAll(x => duplicate.Where(z => z.Id != x.Id && z.Name == z.Name && z.Email == x.Email).Count() == 1);
+
+            Models.RefreshData();
 
             Out(items);
         }
