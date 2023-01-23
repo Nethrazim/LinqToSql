@@ -10,9 +10,9 @@ using Models = LinqToSql.Queries.ObjectModels.Models;
 namespace LinqToSql.Queries
 {
 
-    public class Q1 : QBase
+    public class Q1GroupByDistinct : QBase
     {
-        public Q1() { }
+        public Q1GroupByDistinct() { }
 
         public List<A> items = Models.items;
 

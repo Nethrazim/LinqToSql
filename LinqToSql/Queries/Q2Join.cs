@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace LinqToSql.Queries
 {
-    public class Q2 : QBase
+    public class Q2Join : QBase
     {
         public List<A> items = Models.items;
         public List<B> items2 = Models.items2;  
 
-        public Q2() { }
+        public Q2Join() { }
 
         public override void QToObjects()
         {
@@ -49,6 +49,14 @@ namespace LinqToSql.Queries
                          Total = items.Count() * items2.Count()
                      };
             Out(q4);
+
+            var q5 = items.GroupJoin(items2, it => it.Id, it2 => it2.Id, (it, it2) =>
+            new {
+                Persons = it,
+                Addresses = it2.Count()
+            });
+
+            Out(q5);
         }
     }
 }

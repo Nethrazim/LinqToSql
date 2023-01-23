@@ -1,11 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using LinqToSql.Queries;
 
-/*Q1 q1 = new Q1();
+Q1GroupByDistinct q1 = new Q1GroupByDistinct();
 q1.QToObjects();
-q1.QToSql();*/
+q1.QToSql();
 
-Q2 q2 = new Q2();
+Q2Join q2 = new Q2Join();
 q2.QToObjects();
 
 
