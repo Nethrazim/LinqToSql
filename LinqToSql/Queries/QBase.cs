@@ -32,6 +32,20 @@ namespace LinqToSql.Queries
             }
         }
 
+        public virtual void Out<T, Tkey>(IEnumerable<IGrouping<Tkey, T>> group) 
+        {
+            Console.WriteLine($"FileName {FileName} Example <<{++sequence}>> :");
+            foreach (var g in group)
+            {
+                Console.WriteLine("Group Key: {0}", g.Key);
+                Console.WriteLine("Group's list length : {0}", g.Count());
+                foreach (var item in g)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+        }
+
         public virtual void Out(IEnumerable<int> items)
         {
             Console.WriteLine($"FileName {FileName} Example <<{++sequence}>> :");

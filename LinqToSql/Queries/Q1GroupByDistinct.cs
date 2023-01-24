@@ -28,6 +28,10 @@ namespace LinqToSql.Queries
             Models.RefreshData();
 
             Out(items);
+
+            var groupedResult = from s in items
+                                group s by s.Name;
+            Out(groupedResult);
         }
 
         public void QToSql()
