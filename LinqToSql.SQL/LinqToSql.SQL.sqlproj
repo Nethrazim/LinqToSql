@@ -61,7 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Persons.sql" />
-    <Compile Include="PostDeploy\PostDeploy.sql" />
+    <PostDeploy Include="PostDeploy\PostDeploy.sql" />
+    <Build Include="Tables\PersonAddress.sql" />
+    <None Include="PostDeploy\Script.PopulateAddresses.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeploy\Script.PopulatePersons.sql" />

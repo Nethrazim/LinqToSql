@@ -10,3 +10,4 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 :r .\Script.PopulatePersons.sql
+:r .\Script.PopulateAddresses.sql
